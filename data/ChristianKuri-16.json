@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "ChristianKuri",
+  "address": "0xa0ba6055d99ef62e5ed2f9a1d21fb9d89558ea90",
+  "risk": "2",
+  "title": "Someone can start a crowdfund for an ERC721 token that does not exists",
+  "issueId": 16,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/16"
+}
