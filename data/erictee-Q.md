@@ -48,21 +48,8 @@ contracts/proposals/ProposalExecutionEngine.sol:L142                assert(curre
 contracts/crowdfund/CrowdfundNFT.sol:L166        assert(false); // Will not be reached.
 
 ```
-### [L-03] Use of ```ecrecover``` is susceptible to signature malleability
 
-
-#### Impact
-The ```ecrecover``` function is used to recover the address from the signature. The built-in EVM precompile ecrecover is susceptible to signature malleability which could lead to replay attacks (references: https://swcregistry.io/docs/SWC-117, https://swcregistry.io/docs/SWC-121 and https://medium.com/cryptronics/signature-replay-vulnerabilities-in-smart-contracts-3b6f7596df57).
-
-Consider using OpenZeppelin’s ECDSA library (which prevents this malleability) instead of the built-in function.
-
-
-#### Findings:
-```
-contracts/vendor/solmate/ERC20.sol:L129            address recoveredAddress = ecrecover(
-
-```
-### [L-04] Avoid floating pragmas for non-library contracts.
+### [L-03] Avoid floating pragmas for non-library contracts.
 
 
 #### Impact
@@ -90,8 +77,6 @@ contracts/utils/LibAddress.sol:L2     pragma solidity ^0.8;
 
 contracts/utils/LibERC20Compat.sol:L2     pragma solidity ^0.8;
 
-contracts/utils/PartyHelpers.sol:L2     pragma solidity ^0.8;
-
 contracts/utils/Implementation.sol:L2     pragma solidity ^0.8;
 
 contracts/utils/LibRawResult.sol:L2     pragma solidity ^0.8;
@@ -100,13 +85,7 @@ contracts/utils/LibSafeERC721.sol:L2     pragma solidity ^0.8;
 
 contracts/utils/EIP165.sol:L2     pragma solidity ^0.8;
 
-contracts/utils/vendor/Strings.sol:L2     pragma solidity ^0.8;
-
-contracts/utils/vendor/Base64.sol:L2     pragma solidity ^0.8;
-
 contracts/globals/IGlobals.sol:L2     pragma solidity ^0.8;
-
-contracts/globals/LibGlobals.sol:L2     pragma solidity ^0.8;
 
 contracts/globals/Globals.sol:L2     pragma solidity ^0.8;
 
@@ -120,27 +99,15 @@ contracts/party/IPartyFactory.sol:L2     pragma solidity ^0.8;
 
 contracts/party/PartyGovernanceNFT.sol:L2     pragma solidity ^0.8;
 
-contracts/renderers/IERC721Renderer.sol:L2     pragma solidity ^0.8;
-
-contracts/renderers/CrowdfundNFTRenderer.sol:L2     pragma solidity ^0.8;
-
-contracts/renderers/PartyGovernanceNFTRenderer.sol:L2     pragma solidity ^0.8;
-
 contracts/renderers/DummyERC721Renderer.sol:L2     pragma solidity ^0.8;
 
 contracts/gatekeepers/IGateKeeper.sol:L2     pragma solidity ^0.8;
-
-contracts/gatekeepers/TokenGateKeeper.sol:L2     pragma solidity ^0.8;
-
-contracts/gatekeepers/AllowListGateKeeper.sol:L2     pragma solidity ^0.8;
 
 contracts/proposals/FractionalizeProposal.sol:L2     pragma solidity ^0.8;
 
 contracts/proposals/ProposalStorage.sol:L2     pragma solidity ^0.8;
 
 contracts/proposals/ListOnZoraProposal.sol:L2     pragma solidity ^0.8;
-
-contracts/proposals/ZoraHelpers.sol:L2     pragma solidity ^0.8;
 
 contracts/proposals/ArbitraryCallsProposal.sol:L2     pragma solidity ^0.8;
 
@@ -158,29 +125,9 @@ contracts/proposals/vendor/IOpenseaExchange.sol:L2     pragma solidity ^0.8;
 
 contracts/proposals/vendor/IOpenseaConduitController.sol:L2     pragma solidity ^0.8;
 
-contracts/market-wrapper/KoansMarketWrapper.sol:L2     pragma solidity ^0.8;
-
 contracts/market-wrapper/IMarketWrapper.sol:L2     pragma solidity ^0.8;
 
-contracts/market-wrapper/ZoraMarketWrapper.sol:L2     pragma solidity ^0.8;
-
-contracts/market-wrapper/NounsMarketWrapper.sol:L2     pragma solidity ^0.8;
-
-contracts/market-wrapper/FoundationMarketWrapper.sol:L2     pragma solidity ^0.8;
-
-contracts/vendor/solmate/ERC721.sol:L5     pragma solidity >=0.8.0;
-
-contracts/vendor/solmate/ERC1155.sol:L5     pragma solidity ^0.8;
-
-contracts/vendor/solmate/ERC20.sol:L5     pragma solidity >=0.8.0;
-
-contracts/vendor/markets/INounsAuctionHouse.sol:L18     pragma solidity ^0.8;
-
-contracts/vendor/markets/IKoansAuctionHouse.sol:L2     pragma solidity ^0.8;
-
 contracts/vendor/markets/IZoraAuctionHouse.sol:L2     pragma solidity ^0.8;
-
-contracts/vendor/markets/IFoundationMarket.sol:L2     pragma solidity ^0.8;
 
 contracts/tokens/ERC721Receiver.sol:L2     pragma solidity ^0.8;
 
@@ -209,7 +156,7 @@ contracts/crowdfund/BuyCrowdfundBase.sol:L2     pragma solidity ^0.8;
 contracts/crowdfund/AuctionCrowdfund.sol:L2     pragma solidity ^0.8;
 
 ```
-### [L-05] ```require()```/```revert()``` statements should have descriptive strings.
+### [L-04] ```require()```/```revert()``` statements should have descriptive strings.
 
 
 #### Impact
@@ -225,7 +172,7 @@ contracts/proposals/ProposalExecutionEngine.sol:L246        require(proposalType
 contracts/proposals/ProposalExecutionEngine.sol:L247        require(uint8(proposalType) < uint8(ProposalType.NumProposalTypes));
 
 ```
-### [L-06] ```_safemint()``` should be used rather than ```_mint()``` wherever possible
+### [L-05] ```_safemint()``` should be used rather than ```_mint()``` wherever possible
 
 
 #### Impact
@@ -236,22 +183,12 @@ contracts/proposals/ProposalExecutionEngine.sol:L247        require(uint8(propos
 ```
 contracts/party/PartyGovernanceNFT.sol:L132        _mint(owner, tokenId);
 
-contracts/vendor/solmate/ERC721.sol:L156    function _mint(address to, uint256 id) internal virtual {
-
-contracts/vendor/solmate/ERC721.sol:L193        _mint(to, id);
-
-contracts/vendor/solmate/ERC721.sol:L208        _mint(to, id);
-
-contracts/vendor/solmate/ERC1155.sol:L139    function _mint(
-
-contracts/vendor/solmate/ERC20.sol:L182    function _mint(address to, uint256 amount) internal virtual {
-
 contracts/crowdfund/CrowdfundNFT.sol:L141    function _mint(address owner) internal returns (uint256 tokenId)
 
 contracts/crowdfund/Crowdfund.sol:L439                _mint(contributor);
 
 ```
-### [L-07] Events not emitted for important state changes.
+### [L-06] Events not emitted for important state changes.
 
 
 #### Impact
@@ -273,7 +210,7 @@ contracts/globals/Globals.sol:L75             function setIncludesUint256(uint25
 contracts/globals/Globals.sol:L79             function setIncludesAddress(uint256 key, address value, bool isIncluded) external onlyMultisig {
 
 ```
-### [L-08] Unsafe ERC20 Operation(s)
+### [L-07] Unsafe ERC20 Operation(s)
 
 
 #### Impact
@@ -300,12 +237,6 @@ Code architecture, incentives, and error handling/reporting questions/issues sho
 
 #### Findings:
 ```
-contracts/renderers/CrowdfundNFTRenderer.sol:L34            // TODO: Parameterize
-
-contracts/renderers/PartyGovernanceNFTRenderer.sol:L56            // TODO: Parameterize
-
-contracts/renderers/PartyGovernanceNFTRenderer.sol:L87        // TODO: Write decimal string library
-
 contracts/renderers/DummyERC721Renderer.sol:L8        // TODO: make this human readable
 
 ```
