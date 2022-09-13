@@ -17,10 +17,6 @@ contracts/proposals/ListOnOpenseaProposal.sol:L164                    return abi
 
 contracts/proposals/ListOnOpenseaProposal.sol:L219            return abi.encode(ListOnOpenseaStep.ListedOnOpenSea, orderHash, expiry);
 
-contracts/vendor/solmate/ERC20.sol:L135                            abi.encode(
-
-contracts/vendor/solmate/ERC20.sol:L168                abi.encode(
-
 ```
 
 ### [G-02] Using bools for storage incurs overhead.
@@ -54,14 +50,6 @@ contracts/party/PartyGovernance.sol:L197    bool public emergencyExecuteDisabled
 
 contracts/party/PartyGovernance.sol:L207    mapping(address => bool) public isHost;
 
-contracts/renderers/PartyGovernanceNFTRenderer.sol:L26    mapping(address => bool) isHost;
-
-contracts/renderers/PartyGovernanceNFTRenderer.sol:L36    mapping(address => mapping(address => bool)) isApprovedForAll;
-
-contracts/vendor/solmate/ERC721.sol:L50    mapping(address => mapping(address => bool)) public isApprovedForAll;
-
-contracts/vendor/solmate/ERC1155.sol:L24    mapping(address => mapping(address => bool)) public isApprovedForAll;
-
 contracts/crowdfund/Crowdfund.sol:L106    bool private _splitRecipientHasBurned;
 
 ```
@@ -78,10 +66,6 @@ contracts/distribution/TokenDistributor.sol:L230        for (uint256 i = 0; i < 
 
 contracts/distribution/TokenDistributor.sol:L239        for (uint256 i = 0; i < infos.length; ++i) {
 
-contracts/utils/PartyHelpers.sol:L64        for (uint256 i = 0; i < members.length; i++) {
-
-contracts/utils/PartyHelpers.sol:L85        for (uint256 i = 0; i < voters.length; i++) {
-
 contracts/party/PartyGovernance.sol:L306        for (uint256 i=0; i < opts.hosts.length; ++i) {
 
 contracts/proposals/ArbitraryCallsProposal.sol:L52            for (uint256 i = 0; i < hadPreciouses.length; ++i) {
@@ -95,10 +79,6 @@ contracts/proposals/LibProposal.sol:L14        for (uint256 i = 0; i < preciousT
 contracts/proposals/LibProposal.sol:L32        for (uint256 i = 0; i < preciousTokens.length; ++i) {
 
 contracts/proposals/ListOnOpenseaProposal.sol:L291            for (uint256 i = 0; i < fees.length; ++i) {
-
-contracts/vendor/solmate/ERC1155.sol:L80        for (uint256 i = 0; i < ids.length; ) {
-
-contracts/vendor/solmate/ERC1155.sol:L118            for (uint256 i = 0; i < owners.length; ++i) {
 
 contracts/crowdfund/CollectionBuyCrowdfund.sol:L62        for (uint256 i; i < hosts.length; i++) {
 
@@ -117,45 +97,10 @@ Custom errors are available from solidity version 0.8.4, it saves around 50 gas 
 
 #### Findings:
 ```
-contracts/utils/PartyHelpers.sol:L49        revert("PartyHelpers::Unknown CrowdfundType");
-
-contracts/utils/vendor/Strings.sol:L61        require(value == 0, "Strings: hex length insufficient");
-
-contracts/vendor/solmate/ERC721.sol:L35        require((owner = _ownerOf[id]) != address(0), "NOT_MINTED");
-
-contracts/vendor/solmate/ERC721.sol:L39        require(owner != address(0), "ZERO_ADDRESS");
-
-contracts/vendor/solmate/ERC721.sol:L68        require(msg.sender == owner || isApprovedForAll[owner][msg.sender], "NOT_AUTHORIZED");
-
-contracts/vendor/solmate/ERC721.sol:L86        require(from == _ownerOf[id], "WRONG_FROM");
-
-contracts/vendor/solmate/ERC721.sol:L88        require(to != address(0), "INVALID_RECIPIENT");
-
-contracts/vendor/solmate/ERC721.sol:L157        require(to != address(0), "INVALID_RECIPIENT");
-
-contracts/vendor/solmate/ERC721.sol:L159        require(_ownerOf[id] == address(0), "ALREADY_MINTED");
-
-contracts/vendor/solmate/ERC721.sol:L174        require(owner != address(0), "NOT_MINTED");
-
-contracts/vendor/solmate/ERC1155.sol:L49        require(msg.sender == from || isApprovedForAll[from][msg.sender], "NOT_AUTHORIZED");
-
-contracts/vendor/solmate/ERC1155.sol:L72        require(ids.length == amounts.length, "LENGTH_MISMATCH");
-
-contracts/vendor/solmate/ERC1155.sol:L74        require(msg.sender == from || isApprovedForAll[from][msg.sender], "NOT_AUTHORIZED");
-
-contracts/vendor/solmate/ERC1155.sol:L111        require(owners.length == ids.length, "LENGTH_MISMATCH");
-
-contracts/vendor/solmate/ERC1155.sol:L166        require(idsLength == amounts.length, "LENGTH_MISMATCH");
-
-contracts/vendor/solmate/ERC1155.sol:L196        require(idsLength == amounts.length, "LENGTH_MISMATCH");
-
-contracts/vendor/solmate/ERC20.sol:L124        require(deadline >= block.timestamp, "PERMIT_DEADLINE_EXPIRED");
-
-contracts/vendor/solmate/ERC20.sol:L153            require(recoveredAddress != address(0) && recoveredAddress == owner, "INVALID_SIGNER");
-
 contracts/crowdfund/CrowdfundNFT.sol:L29        revert('ALWAYS FAILING');
 
 ```
+
 ### [G-05] Empty blocks should be removed or emit something
 
 
@@ -202,11 +147,102 @@ Use a solidity version of at least 0.8.10 to have external calls skip contract e
 
 #### Findings:
 ```
-contracts/vendor/solmate/ERC721.sol:L5      pragma solidity >=0.8.0;
+contracts/distribution/ITokenDistributorParty.sol:L2     pragma solidity ^0.8;
 
-contracts/vendor/solmate/ERC20.sol:L5      pragma solidity >=0.8.0;
+contracts/distribution/ITokenDistributor.sol:L2     pragma solidity ^0.8;
+
+contracts/distribution/TokenDistributor.sol:L2     pragma solidity ^0.8;
+
+contracts/utils/Proxy.sol:L2     pragma solidity ^0.8;
+
+contracts/utils/LibSafeCast.sol:L2     pragma solidity ^0.8;
+
+contracts/utils/ReadOnlyDelegateCall.sol:L2     pragma solidity ^0.8;
+
+contracts/utils/LibAddress.sol:L2     pragma solidity ^0.8;
+
+contracts/utils/LibERC20Compat.sol:L2     pragma solidity ^0.8;
+
+contracts/utils/Implementation.sol:L2     pragma solidity ^0.8;
+
+contracts/utils/LibRawResult.sol:L2     pragma solidity ^0.8;
+
+contracts/utils/LibSafeERC721.sol:L2     pragma solidity ^0.8;
+
+contracts/utils/EIP165.sol:L2     pragma solidity ^0.8;
+
+contracts/globals/IGlobals.sol:L2     pragma solidity ^0.8;
+
+contracts/globals/Globals.sol:L2     pragma solidity ^0.8;
+
+contracts/party/Party.sol:L2     pragma solidity ^0.8;
+
+contracts/party/PartyGovernance.sol:L2     pragma solidity ^0.8;
+
+contracts/party/PartyFactory.sol:L2     pragma solidity ^0.8;
+
+contracts/party/IPartyFactory.sol:L2     pragma solidity ^0.8;
+
+contracts/party/PartyGovernanceNFT.sol:L2     pragma solidity ^0.8;
+
+contracts/renderers/DummyERC721Renderer.sol:L2     pragma solidity ^0.8;
+
+contracts/gatekeepers/IGateKeeper.sol:L2     pragma solidity ^0.8;
+
+contracts/proposals/FractionalizeProposal.sol:L2     pragma solidity ^0.8;
+
+contracts/proposals/ProposalStorage.sol:L2     pragma solidity ^0.8;
+
+contracts/proposals/ListOnZoraProposal.sol:L2     pragma solidity ^0.8;
+
+contracts/proposals/ArbitraryCallsProposal.sol:L2     pragma solidity ^0.8;
+
+contracts/proposals/LibProposal.sol:L2     pragma solidity ^0.8;
+
+contracts/proposals/IProposalExecutionEngine.sol:L2     pragma solidity ^0.8;
+
+contracts/proposals/ListOnOpenseaProposal.sol:L2     pragma solidity ^0.8;
+
+contracts/proposals/ProposalExecutionEngine.sol:L2     pragma solidity ^0.8;
+
+contracts/proposals/vendor/FractionalV1.sol:L2     pragma solidity ^0.8;
+
+contracts/proposals/vendor/IOpenseaExchange.sol:L2     pragma solidity ^0.8;
+
+contracts/proposals/vendor/IOpenseaConduitController.sol:L2     pragma solidity ^0.8;
+
+contracts/market-wrapper/IMarketWrapper.sol:L2     pragma solidity ^0.8;
+
+contracts/vendor/markets/IZoraAuctionHouse.sol:L2     pragma solidity ^0.8;
+
+contracts/tokens/ERC721Receiver.sol:L2     pragma solidity ^0.8;
+
+contracts/tokens/ERC1155Receiver.sol:L2     pragma solidity ^0.8;
+
+contracts/tokens/IERC721.sol:L2     pragma solidity ^0.8;
+
+contracts/tokens/IERC1155.sol:L2     pragma solidity ^0.8;
+
+contracts/tokens/IERC20.sol:L2     pragma solidity ^0.8;
+
+contracts/tokens/IERC721Receiver.sol:L2     pragma solidity ^0.8;
+
+contracts/crowdfund/CrowdfundNFT.sol:L2     pragma solidity ^0.8;
+
+contracts/crowdfund/CollectionBuyCrowdfund.sol:L2     pragma solidity ^0.8;
+
+contracts/crowdfund/CrowdfundFactory.sol:L2     pragma solidity ^0.8;
+
+contracts/crowdfund/BuyCrowdfund.sol:L2     pragma solidity ^0.8;
+
+contracts/crowdfund/Crowdfund.sol:L2     pragma solidity ^0.8;
+
+contracts/crowdfund/BuyCrowdfundBase.sol:L2     pragma solidity ^0.8;
+
+contracts/crowdfund/AuctionCrowdfund.sol:L2     pragma solidity ^0.8;
 
 ```
+
 ### [G-07] Functions guaranteed to revert when called by normal users can be declared as payable.
 
 
@@ -256,22 +292,6 @@ Consider changing ```X += Y``` to ```X = X + Y``` to save gas.
 ```
 contracts/party/PartyGovernance.sol:L595        values.votes += votingPower;
 
-contracts/vendor/solmate/ERC1155.sol:L52        balanceOf[to][id] += amount;
-
-contracts/vendor/solmate/ERC1155.sol:L85            balanceOf[to][id] += amount;
-
-contracts/vendor/solmate/ERC1155.sol:L145        balanceOf[to][id] += amount;
-
-contracts/vendor/solmate/ERC1155.sol:L169            balanceOf[to][ids[i]] += amounts[i];
-
-contracts/vendor/solmate/ERC20.sol:L81            balanceOf[to] += amount;
-
-contracts/vendor/solmate/ERC20.sol:L103            balanceOf[to] += amount;
-
-contracts/vendor/solmate/ERC20.sol:L183        totalSupply += amount;
-
-contracts/vendor/solmate/ERC20.sol:L188            balanceOf[to] += amount;
-
 contracts/crowdfund/Crowdfund.sol:L243            ethContributed += contributions[i].amount;
 
 contracts/crowdfund/Crowdfund.sol:L352                    ethOwed += c.amount;
@@ -297,33 +317,11 @@ Saves 6 gas per loop.
 
 #### Findings:
 ```
-contracts/utils/PartyHelpers.sol:L64        for (uint256 i = 0; i < members.length; i++) {
-
-contracts/utils/PartyHelpers.sol:L85        for (uint256 i = 0; i < voters.length; i++) {
-
-contracts/utils/PartyHelpers.sol:L115        for (uint256 i = 0; i < count; i++) {
-
-contracts/utils/vendor/Strings.sol:L22            digits++;
-
-contracts/utils/vendor/Strings.sol:L44            length++;
-
 contracts/crowdfund/CollectionBuyCrowdfund.sol:L62        for (uint256 i; i < hosts.length; i++) {
 
 ```
-### [G-10] Splitting ```require()``` statements that use && saves gas.
 
-
-#### Impact
-Consider splitting the ```require()``` statements to save gas.
-
-
-#### Findings:
-```
-contracts/vendor/solmate/ERC20.sol:L153            require(recoveredAddress != address(0) && recoveredAddress == owner, "INVALID_SIGNER");
-
-```
-
-### [G-11] Explicit initialization with zero not required
+### [G-10] Explicit initialization with zero not required
 
 
 #### Impact
@@ -335,14 +333,6 @@ Explicit initialization with zero is not required for variable declaration becau
 contracts/distribution/TokenDistributor.sol:L230        for (uint256 i = 0; i < infos.length; ++i) {
 
 contracts/distribution/TokenDistributor.sol:L239        for (uint256 i = 0; i < infos.length; ++i) {
-
-contracts/utils/PartyHelpers.sol:L64        for (uint256 i = 0; i < members.length; i++) {
-
-contracts/utils/PartyHelpers.sol:L85        for (uint256 i = 0; i < voters.length; i++) {
-
-contracts/utils/PartyHelpers.sol:L115        for (uint256 i = 0; i < count; i++) {
-
-contracts/utils/vendor/Strings.sol:L42        uint256 length = 0;
 
 contracts/party/PartyGovernance.sol:L432        uint256 low = 0;
 
@@ -358,14 +348,6 @@ contracts/proposals/LibProposal.sol:L32        for (uint256 i = 0; i < preciousT
 
 contracts/proposals/ListOnOpenseaProposal.sol:L291            for (uint256 i = 0; i < fees.length; ++i) {
 
-contracts/vendor/solmate/ERC1155.sol:L80        for (uint256 i = 0; i < ids.length; ) {
-
-contracts/vendor/solmate/ERC1155.sol:L118            for (uint256 i = 0; i < owners.length; ++i) {
-
-contracts/vendor/solmate/ERC1155.sol:L168        for (uint256 i = 0; i < idsLength; ) {
-
-contracts/vendor/solmate/ERC1155.sol:L198        for (uint256 i = 0; i < idsLength; ) {
-
 contracts/crowdfund/Crowdfund.sol:L180        for (uint256 i = 0; i < contributors.length; ++i) {
 
 contracts/crowdfund/Crowdfund.sol:L242        for (uint256 i = 0; i < numContributions; ++i) {
@@ -375,7 +357,7 @@ contracts/crowdfund/Crowdfund.sol:L300        for (uint256 i = 0; i < preciousTo
 contracts/crowdfund/Crowdfund.sol:L348            for (uint256 i = 0; i < numContributions; ++i) {
 
 ```
-### [G-12] ```++i```/```i++``` should be ```unchecked{++i}```/```unchecked{i++}``` when it is not possible for them to overflow, as is the case when used in for- and while-loops.
+### [G-11] ```++i```/```i++``` should be ```unchecked{++i}```/```unchecked{i++}``` when it is not possible for them to overflow, as is the case when used in for- and while-loops.
 
 
 #### Impact
@@ -387,12 +369,6 @@ The ```unchecked``` keyword is new in solidity version 0.8.0, so this only appli
 contracts/distribution/TokenDistributor.sol:L230        for (uint256 i = 0; i < infos.length; ++i) {
 
 contracts/distribution/TokenDistributor.sol:L239        for (uint256 i = 0; i < infos.length; ++i) {
-
-contracts/utils/PartyHelpers.sol:L64        for (uint256 i = 0; i < members.length; i++) {
-
-contracts/utils/PartyHelpers.sol:L85        for (uint256 i = 0; i < voters.length; i++) {
-
-contracts/utils/PartyHelpers.sol:L115        for (uint256 i = 0; i < count; i++) {
 
 contracts/party/PartyGovernance.sol:L306        for (uint256 i=0; i < opts.hosts.length; ++i) {
 
@@ -420,21 +396,3 @@ contracts/crowdfund/Crowdfund.sol:L348            for (uint256 i = 0; i < numCon
 
 ```
 
-### [G-13] Revert message greater than 32 bytes
-
-
-#### Impact
-Keep revert message lower than or equal to 32 bytes to save gas.
-
-
-#### Findings:
-```
-contracts/market-wrapper/KoansMarketWrapper.sol:L67        require(
-
-contracts/market-wrapper/KoansMarketWrapper.sol:L92        require(
-
-contracts/market-wrapper/NounsMarketWrapper.sol:L65        require(
-
-contracts/market-wrapper/NounsMarketWrapper.sol:L90        require(
-
-```
