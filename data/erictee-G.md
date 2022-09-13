@@ -419,3 +419,22 @@ contracts/crowdfund/Crowdfund.sol:L300        for (uint256 i = 0; i < preciousTo
 contracts/crowdfund/Crowdfund.sol:L348            for (uint256 i = 0; i < numContributions; ++i) {
 
 ```
+
+### [G-13] Revert message greater than 32 bytes
+
+
+#### Impact
+Keep revert message lower than or equal to 32 bytes to save gas.
+
+
+#### Findings:
+```
+contracts/market-wrapper/KoansMarketWrapper.sol:L67        require(
+
+contracts/market-wrapper/KoansMarketWrapper.sol:L92        require(
+
+contracts/market-wrapper/NounsMarketWrapper.sol:L65        require(
+
+contracts/market-wrapper/NounsMarketWrapper.sol:L90        require(
+
+```
