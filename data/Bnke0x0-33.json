@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "Bnke0x0",
+  "address": "0x1b8eaf5900941cfcc8323529040a48e129a28905",
+  "risk": "2",
+  "title": "Using TransferFrom on ERC721 tokens",
+  "issueId": 33,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/33"
+}
