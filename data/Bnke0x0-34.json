@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "Bnke0x0",
+  "address": "0x1b8eaf5900941cfcc8323529040a48e129a28905",
+  "risk": "2",
+  "title": "no use of safeMint() as safe guard for users",
+  "issueId": 34,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/34"
+}
