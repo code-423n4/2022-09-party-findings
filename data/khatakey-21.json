@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "khatakey",
+  "address": "0x9e6d205afbf66b22bb4b6fea442a5fee4535920f",
+  "risk": "2",
+  "title": "Party contract locks up ETH that it receives",
+  "issueId": 21,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/21"
+}
