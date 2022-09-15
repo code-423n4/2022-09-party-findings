@@ -142,6 +142,26 @@ Becomes:
       }
     }
 
+ File Crowdfund.sol, line 370:
+
+    votingPower = ((1e4 - splitBps_) * ethUsed) / 1e4;
+
+Becomes:
+
+    unchecked {
+      votingPower = ((1e4 - splitBps_) * ethUsed) / 1e4;
+    }
+
+ File Crowdfund.sol, line 374:
+
+    votingPower += (splitBps_ * totalEthUsed + (1e4 - 1)) / 1e4;
+
+Becomes:
+
+    unchecked {
+      votingPower += (splitBps_ * totalEthUsed + (1e4 - 1)) / 1e4;
+    }
+
  File Crowdfund.sol, line 411:
 
     totalContributions += amount;
@@ -151,6 +171,17 @@ Becomes:
     unchecked {
       totalContributions += amount;
     }
+
+ File Crowdfund.sol, line 427:
+
+    lastContribution.amount += amount;
+
+Becomes:
+
+    unchecked {
+      lastContribution.amount += amount;
+    }
+
 
  File TokenDistributor.sol, line 352:
 
@@ -185,6 +216,16 @@ Becomes:
     uint96 id_;
     unchecked {
       id_ = ++_lastId;
+    }
+
+ File AllowListGateKeeper.sol, line 170:
+
+    state.remainingMemberSupply = remainingMemberSupply - amountClaimed;
+
+Becomes:
+
+    unchecked {
+      state.remainingMemberSupply = remainingMemberSupply - amountClaimed;
     }
 
  File TokenGateKeeper.sol, line 48:
@@ -409,5 +450,27 @@ Becomes:
       }
     }
 
+# 6. [G-6]  Using memory instead of storage variable
 
+File Crowdfund.sol, line 240:
 
+    Contribution[] storage contributions = _contributionsByContributor[contributor];
+
+Becomes:
+
+    Contribution[] memory contributions = _contributionsByContributor[contributor];
+
+##### Instances include:
+
+File Crowdfund.sol, line 346
+
+# 6. [G-6]  <x> += y cost more gas than <x> = <x> + <y>
+
+##### Instances include:
+
+File Crowdfund.sol, line 243, 352, 355, 359, 374, 411, 427
+File TokenDistributor.sol, line 381, 
+File PartyGovernance.sol, line 595, 959
+File ArbitraryCallsProposal.sol, line 72
+File ERC20.sol, line 76, 81, 98, 103, 183, 188, 195, 200
+File ERC1155.sol, line 51, 52, 84, 85, 145, 169, 199, 216
