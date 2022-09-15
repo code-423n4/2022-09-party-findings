@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "Anth3m",
+  "address": "0x31447c30229367cc18975beb9a47677056652c57",
+  "risk": "3",
+  "title": "Malicious contributor may DOS crowdfund, trapping all assets within a crowdfund.",
+  "issueId": 51,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/51"
+}
