@@ -73,6 +73,7 @@ Recommended: Lock the pragma version and also consider known bugs (https://githu
 
 4. Several critical operations do not trigger events, which will make it difficult to review the correct behavior of the contracts once deployed.
 
+https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/globals/Globals.sol#L27
 https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L653
 https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L783
 https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/crowdfund/Crowdfund.sol#L262
@@ -253,3 +254,13 @@ https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867a
 https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/proposals/ListOnOpenseaProposal.sol#L238-L374
 https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/crowdfund/Crowdfund.sol#L322-L494https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L916
 https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/PartyGovernance.sol#L989-L1137
+
+21. The else statement is wrongly applied
+
+https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/distribution/TokenDistributor.sol#L384-L388
+
+The else statement in the function _transfer() can be better applied. Currently the else statement uses assert to make sure the token type is ERC20.
+But instead of doing this, we can just replace all of that with:
+else if (tokenType == TokenType.Erc20) {
+IERC20(token).compatTransfer(recipient, amount);
+        }
