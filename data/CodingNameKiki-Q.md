@@ -210,6 +210,7 @@ https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867a
 16. Expressions for constant values such as a call to keccak256() is prefered to use immutable rather than constant.
 
 https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/proposals/ProposalExecutionEngine.sol#L80
+https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/proposals/ProposalStorage.sol#L19
 
 17. Low level calls don't check for contract existence
 
@@ -217,5 +218,3 @@ Low level calls return success if called on a destructed contract. See OpenZeppe
 
 https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L795
 https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/crowdfund/BuyCrowdfundBase.sol#L131
-
-18. Lack of reentrancy guards on external functions
