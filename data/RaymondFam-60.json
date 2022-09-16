@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "RaymondFam",
+  "address": "0x1500aea18ecf78c8508b6d1559e0462f63fe5d15",
+  "risk": "2",
+  "title": "Zero Address at Constructor",
+  "issueId": 60,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/60"
+}
