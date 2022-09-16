@@ -16,6 +16,7 @@ Where possible, include a zero address check for `transferMultiSig()` to avoid n
 Consider indexing parameters for events, serving as logs filter when looking for specifically wanted data. Up to three parameters in an event function can receive the attribute indexed which will cause the respective arguments to be treated as log topics instead of data. The following links are some of the instances entailed:
 
 https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/IPartyFactory.sol#L11
+https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/proposals/ArbitraryCallsProposal.sol#L35
 
 ## Disable `transferFrom`
 ERC721 has both `safeTransferFrom` and `transferFrom`, where `safeTransferFrom` throws an error if the receiving contract's `onERC721Received` method doesn't return a specific magic number. This will ensure a receiving contract is capable of receiving the token to prevent a permanent loss. Where possible, disable `transferFrom()` by rewriting it as follows to prevent calls emanating outside the UI: 
@@ -33,8 +34,4 @@ https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/PartyGo
         revert VotesTransferDisabled();
     }
 ```
-## calldata and memory
-When running a function we could pass the function parameters as calldata or memory for variables such as strings, structs, arrays etc. If we are not modifying the passed parameter we should pass it as calldata because calldata is more gas efficient than memory. Here are some of the instances entailed:
 
-https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/PartyGovernanceNFT.sol#L50-L54
-https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/Party.sol#L33
