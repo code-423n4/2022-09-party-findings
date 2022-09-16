@@ -923,5 +923,46 @@ Block timestamps should not be used for entropy or generating random numbers—i
 
 Time-sensitive logic is sometimes required; e.g., for unlocking contracts (time-locking), completing an ICO after a few weeks, or enforcing expiry dates. It is sometimes recommended to use block.number and an average block time to estimate times; with a 10 second block time, 1 week equates to approximately, 60480 blocks. Thus, specifying a block number at which to change a contract state can be more secure, as miners are unable to easily manipulate the block number.
 
+## (17) Non-usage of specific imports
+
+Severity: Non-Critical
+
+The current form of relative path import is not recommended for use because it can unpredictably pollute the namespace.
+Instead, the Solidity docs recommend specifying imported symbols explicitly.
+https://docs.soliditylang.org/en/v0.8.15/layout-of-source-files.html#importing-other-source-files
+
+This issue is present in all contracts through the partyDaos scoped files.
+
+## Proof Of Concept
+
+Some examples of several contracts:
+
+        import "../tokens/IERC721.sol";
+        import "../party/Party.sol";
+        import "../utils/Implementation.sol";
+        import "../utils/LibSafeERC721.sol";
+        import "../utils/LibRawResult.sol";
+        import "../globals/IGlobals.sol";
+        import "../gatekeepers/IGateKeeper.sol";
+
+        import "../market-wrapper/IMarketWrapper.sol";
+        import "./Crowdfund.sol";
+https://github.com/PartyDAO/party-contracts-c4/tree/main/contracts/crowdfund/AuctionCrowdfund.sol#L4-L13
+
+        import "../tokens/IERC721.sol";
+        import "../party/Party.sol";
+        import "../utils/Implementation.sol";
+        import "../utils/LibSafeERC721.sol";
+        import "../utils/LibRawResult.sol";
+        import "../globals/IGlobals.sol";
+        import "../gatekeepers/IGateKeeper.sol";
+
+        import "./Crowdfund.sol";
+https://github.com/PartyDAO/party-contracts-c4/tree/main/contracts/crowdfund/BuyCrowdfundBase.sol#L4-L12
+
+## Recommended Mitigation Steps
+
+Use specific imports syntax per solidity docs recommendation.
+https://docs.soliditylang.org/en/v0.8.15/layout-of-source-files.html#importing-other-source-files
 
 
