@@ -1,3 +1,17 @@
+## Increasing unit test and integration test coverage
+
+The project requires the integration of Zora, Opensea and fractionalize protocol. We recommand project add unit test and integration test to increase the test coverage for the contract below
+
+
+```
+name                                                   test coverage
+contracts/crowdfund/CrowdfundNFT.sol	                   44.00%
+contracts/party/PartyGovernanceNFT.sol	                   57.69%
+contracts/party/PartyFactory.sol 🌀	                   80.00%
+contracts/proposals/ProposalStorage.sol 🖥 👥 🧮	   80.00%
+contracts/proposals/ProposalExecutionEngine.sol 🖥 	   86.44%
+```
+
 ## USE OF FLOATING PRAGMA
 
 Contracts should be deployed with the same compiler version and flags that they have been tested with thoroughly. Locking the pragma helps to ensure that contracts do not accidentally get deployed using, for example, an outdated compiler version that might introduce bugs that affect the contract system negatively.
