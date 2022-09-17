@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "cccz",
+  "address": "0x74d754378a59ab45d3e6cac83f0b87e8e8719270",
+  "risk": "2",
+  "title": "Precision loss causes the party will never be able to reach 100% consensus.",
+  "issueId": 93,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/93"
+}
