@@ -1,3 +1,19 @@
+## Typo in the comment
+
+https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/proposals/ListOnZoraProposal.sol#L60
+
+```
+    // keccak256(abi.encodeWithSignature('Error(string)', "Auction doesn't exit"))
+    bytes32 constant internal AUCTION_DOESNT_EXIST_ERROR_HASH =
+        0x474ba0184a7cd5de777156a56f3859150719340a6974b6ee50f05c58139f4dc2;
+```
+
+should be 
+
+``` 
+ // keccak256(abi.encodeWithSignature('Error(string)', "Auction doesn't exist"))
+```
+
 ## Increasing unit test and integration test coverage
 
 The project requires the integration of Zora, Opensea and fractionalize protocol. We recommand project add unit test and integration test to increase the test coverage for the contract below
