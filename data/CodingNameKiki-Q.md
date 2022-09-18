@@ -264,3 +264,9 @@ But instead of doing this, we can just replace all of that with:
 else if (tokenType == TokenType.Erc20) {
 IERC20(token).compatTransfer(recipient, amount);
         }
+
+22. Tokens can be sent to the wrong address 
+
+The tokens in the function _transfer() can be sent to the zero address, there is no zero-address check to ensure the tokens are sent to the right address.
+
+https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/distribution/TokenDistributor.sol#L371-L388
