@@ -1,0 +1,9 @@
+    1.  Use '++i'; instead of 'i++' to save gas (found line 62 of ./contracts/crowdfund/CollectionBuyCrowdfund.sol).
+    2.  Use "!= 0" instead of "> 0" uses less gas (found line 144 of ./contracts/crowdfund/Crowdfund.sol ("if (initialBalance > 0)").
+    3. Do not use '+=' ('ethUsed += partialEthUsed', found ./contract/crownfund/Crowdfund.sol). Instead use "ethUsed = ethUsed + partialEthUsed" in order to save some gas.
+    4. Use assembly to write storage value. Line 28 in transferMultiSig() of ./contracts/globals/Globals.sol, instead of " multiSig = newMultiSig;", use  assembly {sstore(multiSig.slot, newMultiSig)} to save gas.
+    5.  Require() string longer than 32 bytes cost extra gas. For exemple, line 69 of ./contracts/market-wrapper/KoansMarketWrapper.sol, the require error string ("KoansMarketWrapper::getCurrentHighestBidder: Auction not active") is 63 bytes long when "KMW::getMinBid: Auction ! active" is 32 bytes long, and therefore a lot cheaper in gas and just as clear.
+    6.  Avoid default assignment of i in loops. 'uint i' instead of 'uint256 i = 0'. Saves 3 gas per instance. (found line 180 of ./contracts/crowdfund/Crowdfund.sol).
+    7.  Increment 'i' at the end of the loop in 'unchecked' so save gas. 'unchecked { ++i; }' at end of loop instead of 'for(uint256 i = 0; i < contributors.length, ++i)'. (found line 180 of ./contracts/crowdfund/Crownfund.sol).
+    8.  Array.length should not be looked up in every loop of a for loop. Should be assigned once before the loop. ('for (uint256 i; i < hosts.length; i++)' found line 62 in ./contracts/crowdfund/CollectionBuyCrowdfund.sol).
+    9. Division by two should use bit shifting. 'uint256 mid = (low + high) / 2' (line 434 of contracts/party/PartyGovernance.sol) should be 'uint256 mid = (low + high) >> 1)' to save some gas;
