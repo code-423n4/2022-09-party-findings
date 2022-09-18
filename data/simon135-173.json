@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "simon135",
+  "address": "0x7bfbabda21beebb17e284901bfc41e942f8128c8",
+  "risk": "2",
+  "title": "if user makes one tx to create a  gate and then has another tx to `_contribute` and if the attacker frontruns the first tx then  then second function will revert and user will loss gas funds ",
+  "issueId": 173,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/173"
+}
