@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "ladboy233",
+  "address": "0xe1faaeb0d29c9cf411cbd47daab14a21ebe266a4",
+  "risk": "3",
+  "title": "The TokenDistributor can have dusted balance that is not distributed because of the accounting and rounding issue when calculating claim account",
+  "issueId": 132,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/132"
+}
