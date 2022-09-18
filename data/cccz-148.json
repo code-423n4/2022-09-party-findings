@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "cccz",
+  "address": "0x74d754378a59ab45d3e6cac83f0b87e8e8719270",
+  "risk": "2",
+  "title": "BuyCrowdfundBase: If the NFT is gifted to the contract, the initial contributor can make the callValue a non-zero minimum to get full control of the NFT.",
+  "issueId": 148,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/148"
+}
