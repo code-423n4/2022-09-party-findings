@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "KIntern_NA",
+  "address": "0x9cD641c50320Ad533a07f6bAFE8b313599D071AE",
+  "risk": "2",
+  "title": "Eth can be stucked in contract when NFT was gifted to party (AuctionCrowdfund.sol)",
+  "issueId": 246,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/246"
+}
