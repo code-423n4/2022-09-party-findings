@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "Franfran",
+  "address": "0xdaaa1ba6839a7f04061da8805de5800b152def2f",
+  "risk": "3",
+  "title": "A malicious user could stuck crowdfund ETH",
+  "issueId": 193,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/193"
+}
