@@ -1,4 +1,4 @@
-Low risk Issues - 67 instances found over 11 Low risk Issues
+Low risk Issues - 68 instances found over 12 Low risk Issues
 
 L-01. Assert Violation
 
@@ -135,6 +135,11 @@ Low level calls return success if called on a destructed contract. See OpenZeppe
 https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L795
 https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/crowdfund/BuyCrowdfundBase.sol#L131
 
+L-12. Move ETH constant to child contract 
+
+All of the functions in the TokenDistributor require 0x0 when referring to Ether, not the constant here. Having it here will lead to mistakes down the line. It’s only used by createNativeDistribution(), so it only needs to be there (it currently is also defined there).
+
+https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/distribution/TokenDistributor.sol#L110
 
 Non-critical Issues - 85 instances found over 11 Non-critical Issues
 
