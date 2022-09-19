@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "s3cunda",
+  "address": "0x02c725c77e25f39996e823dd91304da158a45598",
+  "risk": "2",
+  "title": "proposals/ArbitraryCallsProposal.sol havent specify the compiler version, using compiler before 8.16 may lead to structure ArbitraryCall mis-encoded",
+  "issueId": 218,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/218"
+}
