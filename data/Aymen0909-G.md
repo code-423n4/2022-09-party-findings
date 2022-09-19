@@ -4,14 +4,14 @@
 
 |               | Issue         | Instances     |
 | :-------------: |:-------------|:-------------:|
-| 1      | Variables inside struct should be packed to save gas     | 2    |
-| 2      | Usage of `uints/ints` smaller than 32 bytes (256 bits) incurs overhead  |  5 |
-| 3      | Using `bool` for storage incurs overhead   |  5 |
-| 4      | `array.length` should not be looked up in every loop in a for loop |  8 |
-| 5      | It costs more gas to initialize variables to zero than to let the default of zero be applied    |  11  |
-| 6      | `X += Y/X -= Y` costs more gas than `X = X + Y/X = X - Y` for state variables  |  14 |
-| 7      | Use of `++i` cost less gas than `i++` in for loops    |  8  |
-| 8      | ++i/i++ should be unchecked{++i}/unchecked{i++} when it is not possible for them to overflow, as in the case when used in for & while loops |  8  |
+| 1      | Variables inside struct should be packed to save gas     | 3   |
+| 2      | Usage of `uints/ints` smaller than 32 bytes (256 bits) incurs overhead  |  6  |
+| 3      | Using `bool` for storage incurs overhead   |  3 |
+| 4      | `array.length` should not be looked up in every loop in a for loop |  9 |
+| 5      | Use of `++i` cost less gas than `i++` in for loops    |  1  |
+| 6      | ++i/i++ should be unchecked{++i}/unchecked{i++} when it is not possible for them to overflow, as in the case when used in for & while loops |  11  |
+| 7      | It costs more gas to initialize variables to zero than to let the default of zero be applied    |  10 |
+| 8      | `X += Y/X -= Y` costs more gas than `X = X + Y/X = X - Y` for state variables  |  2 |
 
 ## Findings
 
@@ -399,14 +399,14 @@ File: contracts/party/PartyGovernance.sol
 
 File: contracts/proposals/ArbitraryCallsProposal.sol
 
-52      for (uint256 i = 0; i < hadPreciouses.length; ++i)
-61      for (uint256 i = 0; i < calls.length; ++i)
-78      for (uint256 i = 0; i < hadPreciouses.length; ++i)
+52       for (uint256 i = 0; i < hadPreciouses.length; ++i)
+61       for (uint256 i = 0; i < calls.length; ++i)
+78       for (uint256 i = 0; i < hadPreciouses.length; ++i)
 ```
 
 ### 8- `X += Y/X -= Y` costs more gas than `X = X + Y/X = X - Y` for state variables :
 
-There is 1 instance of this issue:
+There are 2 instances of this issue:
 
 ```
 File: contracts/crowdfund/Crowdfund.sol
