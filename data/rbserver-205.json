@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "rbserver",
+  "address": "0x4bd9605a3e546f3400df2c2be7b1c775aeea56bd",
+  "risk": "2",
+  "title": "One user can be incentivized to front-run another user's `contribute` transaction",
+  "issueId": 205,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/205"
+}
