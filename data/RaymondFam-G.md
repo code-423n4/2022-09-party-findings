@@ -77,3 +77,11 @@ https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/PartyGo
         _;
     }
 ```
+## ++i costs less gas compared to i++
+++i costs less gas compared to i++ or i += 1 for unsigned integers considering the pre-increment operation is cheaper (about 5 GAS per iteration).
+
+i++ increments i and makes the compiler create a temporary variable for returning the initial value of i. In contrast, ++i returns the actual incremented value without making the compiler do extra job.
+
+Here's one instance entailed:
+
+https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/crowdfund/CollectionBuyCrowdfund.sol#L62
