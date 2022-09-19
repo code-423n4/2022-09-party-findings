@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "rbserver",
+  "address": "0x4bd9605a3e546f3400df2c2be7b1c775aeea56bd",
+  "risk": "2",
+  "title": "Calling `transferEth` function can revert if `receiver` input corresponds to a contract that is unable to receive ETH through its `receive` or `fallback` function",
+  "issueId": 212,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/212"
+}
