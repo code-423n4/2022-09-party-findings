@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "rbserver",
+  "address": "0x4bd9605a3e546f3400df2c2be7b1c775aeea56bd",
+  "risk": "2",
+  "title": "`propose` function can be called multiple times to create many meaningless proposals for spamming frontend and weakening user experience",
+  "issueId": 217,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/217"
+}
