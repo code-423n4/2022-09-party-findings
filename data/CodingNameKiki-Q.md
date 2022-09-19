@@ -135,6 +135,7 @@ Low level calls return success if called on a destructed contract. See OpenZeppe
 https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L795
 https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/crowdfund/BuyCrowdfundBase.sol#L131
 
+
 Non-critical Issues - 85 instances found over 11 Non-critical Issues
 
 N-01. Public functions not called by the contract should be declared external instead
