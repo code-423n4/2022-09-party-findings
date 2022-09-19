@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "CRYP70",
+  "address": "0xd40c80da31dcf061fa66ffbbd981bfecd5885af6",
+  "risk": "2",
+  "title": "Users may accidentally send ETH to `Party.sol` and `PartyGovernance.sol` without any way to retrieve the funds back",
+  "issueId": 215,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/215"
+}
