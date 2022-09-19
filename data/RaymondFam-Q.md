@@ -57,3 +57,8 @@ https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/Party.s
 `call`, which returns a boolean value indicating success or failure, in combination with re-entrancy guard is the recommended method to use after December 2019. And, guard against re-entrancy by making all state changes before calling other contracts using re-entrancy guard modifier. Here's one instance entailed:
 
 https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/crowdfund/Crowdfund.sol#L487
+
+## No `withdraw()` for Additional ETH Left in the Contract
+The following line of code could receive ETH returned from an auction and also other sources including someone forces (suicides) ETH into the contract.  The inherited functions from `Crowdfund.sol` seem to only cater for address(this).balance at the initializer for the initial contributors, and refund `ethOwed` based on unused contributions. Consider implementing a `withdraw()` just in case there will be additional ETH stuck in the contract.
+
+https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/crowdfund/AuctionCrowdfund.sol#L144
