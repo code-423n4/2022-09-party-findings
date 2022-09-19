@@ -4,7 +4,7 @@
 
 |               | Issue         | Risk     |Instances     |
 | :-------------: |:-------------|:-------------:|:-------------:|
-| 1      | `constructor` and `transferMultiSig` function missing zero value address checks inside `Globals` contract | Low | 2 |
+| 1      | `constructor` and `transferMultiSig` function missing zero address checks inside `Globals` contract | Low | 2 |
 | 2      | `require` should be used instead of `assert` | Low | 5  |
 | 3      | Non-library/Non-interface files should use fixed compiler versions, not floating ones     | NC | 21  |
 | 4      | Non-assembly method available | NC | 1 |
@@ -14,7 +14,7 @@
 
 ## Findings
 
-### 1-  `constructor` and `transferMultiSig` function missing zero value address checks inside `Globals` contract :
+### 1-  `constructor` and `transferMultiSig` function missing zero address checks inside `Globals` contract :
 
 the `constructor` and `transferMultiSig` function inside the `Globals` contract are missing non zero address checks when setting the `multiSig` address which can cause a set/transfer of `multiSig` to `address(0)`.
 
