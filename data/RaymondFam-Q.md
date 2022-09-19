@@ -5,6 +5,12 @@ The comment should be rewritten as:
 
 /// @notice Factory used to deploy new proxified `Party` instances. 
 
+https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/utils/ReadOnlyDelegateCall.sol#L13
+
+The comment should be rewritten as:
+
+// Inherited by contracts to perform read-only delegate calls.
+
 ## Two-step Transfer of Ownership
 https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/globals/Globals.sol#L27-L28
 
@@ -34,4 +40,16 @@ https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/PartyGo
         revert VotesTransferDisabled();
     }
 ```
+## Zero Address and Zero Value Checks
 
+Zero address and zero value checks should be implemented when initializer is delegatecalled by `Proxy` constructor. This is because there is no setter functions for these options or initData parameters. In the event a mistake was committed, not only that all calls associated with it would be non-functional, the contract would also have to be redeployed. Here are some of the instances entailed:
+
+https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/crowdfund/BuyCrowdfund.sol#L64-L88
+https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/Party.sol#L33-L45
+
+## Assert Costs More Gas Than Require
+The `assert()` function when false, uses up all the remaining gas and reverts all the changes made. On the other hand, a `require()` function when false, also reverts back all the changes made to the contract but does refund all the remaining gas fees we offered to pay.
+
+https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/proposals/ListOnOpenseaProposal.sol#L221
+
+On a side note, the assert function should only be used to examine invariants and test for internal problems. When used correctly, it can assess your contract and discover the conditions and function calls that will result in a failed assert. A properly running program should never reach a failing assert statement; if this occurs, there is a flaw in your contract that has to be addressed.
