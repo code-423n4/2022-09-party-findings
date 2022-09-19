@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "s3cunda",
+  "address": "0x02c725c77e25f39996e823dd91304da158a45598",
+  "risk": "2",
+  "title": "havent specify the solidity compiler version, 8.15 and older version may lead to a mis encoded struct parameter",
+  "issueId": 221,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/221"
+}
