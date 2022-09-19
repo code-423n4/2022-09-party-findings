@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "ayeslick",
+  "address": "0xA47053EDf2037f563b98E29007dB5F1485A6916D",
+  "risk": "3",
+  "title": "An operator can steal an NFT after its listed",
+  "issueId": 276,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/276"
+}
