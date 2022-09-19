@@ -1,4 +1,6 @@
 ##  CACHE THE LENGTH OF ARRAYS IN LOOPS
+Caching the array length outside a loop saves reading it on each iteration, as long as the array's length is not changed during the loop.
+*There are 12 instances of this issue*
 ```solidity
 contracts/crowdfund/CollectionBuyCrowdfund.sol::62 => for (uint256 i; i < hosts.length; i++) {
 contracts/crowdfund/Crowdfund.sol::180 => for (uint256 i = 0; i < contributors.length; ++i) {
@@ -18,7 +20,7 @@ contracts/proposals/ListOnOpenseaProposal.sol::291 => for (uint256 i = 0; i < fe
 &nbsp;
 
 ##  `++I` COSTS LESS GAS THAN `I++`, ESPECIALLY WHEN IT’S USED IN `FOR`-LOOPS (`--I`/`I--` TOO)
-
+*There is 1 instance of this issue*
 ```solidity
 contracts/crowdfund/CollectionBuyCrowdfund.sol::62 =>         for (uint256 i; i < hosts.length; i++) {
 ```
@@ -27,7 +29,7 @@ contracts/crowdfund/CollectionBuyCrowdfund.sol::62 =>         for (uint256 i
 &nbsp;
 
 ##  `<X> -= <Y>`COSTS MORE GAS THAN `<X> = <X> - <Y>` FOR STATE VARIABLES
-
+*There is 1 instance of this issue*
 ```solidity
 contracts/distribution/TokenDistributor.sol
 381:        _storedBalances[balanceId] -= amount;
@@ -39,7 +41,8 @@ contracts/distribution/TokenDistributor.sol
 &nbsp;
 
 ##  Don't Initialize Variables with Default Value
-
+Uninitialized variables are assigned with the types default value. Explicitly initializing a variable with it's default value costs unnecesary gas.
+*There are 14 instances of this issue*
 ```solidity
 contracts/crowdfund/Crowdfund.sol::180 => for (uint256 i = 0; i < contributors.length; ++i) {
 contracts/crowdfund/Crowdfund.sol::242 => for (uint256 i = 0; i < numContributions; ++i) {
@@ -61,7 +64,8 @@ contracts/proposals/ListOnOpenseaProposal.sol::291 => for (uint256 i = 0; i < fe
 &nbsp;
 
 ##  COMPARISONS: != IS MORE EFFICIENT THAN > IN REQUIRE 
-
+When dealing with unsigned integer types, comparisons with != 0 are cheaper then with > 0. This change saves 6 gas per instance
+*There are 2 instances of this issue*
 ```solidity
 contracts/crowdfund/Crowdfund.sol::144 => if (initialBalance > 0) {
 contracts/crowdfund/Crowdfund.sol::471 => if (votingPower > 0) {
@@ -72,6 +76,7 @@ contracts/crowdfund/Crowdfund.sol::471 => if (votingPower > 0) {
 
 
 ##  USING BOOLS FOR STORAGE INCURS OVERHEAD
+*There are 5 instances of this issue*
 ```solidity
 contracts/crowdfund/Crowdfund.sol
 106:    bool private _splitRecipientHasBurned;
@@ -98,7 +103,8 @@ contracts/vendor/markets/IZoraAuctionHouse.sol
 &nbsp;
 
 ## `ABI.ENCODE()` IS LESS EFFICIENT THAN `ABI.ENCODEPACKED()`
-```
+*There are 4 instances of this issue*
+```solidity
 contracts/proposals/ListOnOpenseaProposal.sol
 164:                    return abi.encode(ListOnOpenseaStep.ListedOnZora, ZoraProgressData({
 219:            return abi.encode(ListOnOpenseaStep.ListedOnOpenSea, orderHash, expiry);
@@ -114,7 +120,7 @@ contracts/utils/ReadOnlyDelegateCall.sol
 &nbsp;
 
 ## DIVISION BY TWO SHOULD USE BIT SHIFTING
-
+*There is 1 instance of this issue*
 ```solidity
 contracts/party/PartyGovernance.sol::434 => uint256 mid = (low + high) / 2;
 ```
@@ -125,6 +131,7 @@ contracts/party/PartyGovernance.sol::434 => uint256 mid = (low + high) / 2;
 &nbsp;
 
 ## MULTIPLE `ADDRESS` MAPPINGS CAN BE COMBINED INTO A SINGLE `MAPPING` OF AN `ADDRESS` TO A `STRUCT`, WHERE APPROPRIATE
+*There are 6 instances of this issue*
 ```solidity
 contracts/crowdfund/Crowdfund.sol
 112:    mapping(address => address) public delegationsByContributor;
