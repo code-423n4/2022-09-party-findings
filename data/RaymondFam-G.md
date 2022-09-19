@@ -28,3 +28,26 @@ https://medium.com/joyso/solidity-how-does-function-name-affect-gas-consumption-
 Before deploying your contract, activate the optimizer when compiling using “solc --optimize --bin sourceFile.sol”. By default, the optimizer will optimize the contract assuming it is called 200 times across its lifetime. If you want the initial contract deployment to be cheaper and the later function executions to be more expensive, set it to “ --optimize-runs=1”. Conversely, if you expect many transactions and do not care for higher deployment cost and output size, set “--optimize-runs” to a high number. Please visit the following site for further information:
 
 https://docs.soliditylang.org/en/v0.5.4/using-the-compiler.html#using-the-commandline-compiler
+
+## Uncheck SafeMath
+"Checked" math, which is default in 0.8.0 is not free. The compiler will add some overflow checks, somehow similar to those implemented by `SafeMath`. While it is reasonable to expect these checks to be less expensive than the current `SafeMath`, one should keep in mind that these checks will increase the cost of "basic math operation" that were not previously covered. This particularly concerns variable increments in for loops. Considering no arithmetic overflow/underflow is going to happen in the for loop instance below, `unchecked { ++i ;}` to use the previous wrapping behavior further saves gas:
+
+https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/PartyGovernance.sol#L306-L308
+
+```
+        for (uint256 i=0; i < opts.hosts.length;) {
+            isHost[opts.hosts[i]] = true;
+
+            unchecked {
+                ++i;
+            }
+        }
+```
+## += Costs More Gas
+`+=` generally costs more gas than writing out the assigned equation explicitly. As an example, the following line of code could be rewritten as: 
+
+https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/PartyGovernance.sol#L595
+
+```
+        values.votes = values.votes + votingPower;
+```
