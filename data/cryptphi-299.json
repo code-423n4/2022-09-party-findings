@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "cryptphi",
+  "address": "0x876133657f5356e376b7ae27d251444727ce9488",
+  "risk": "3",
+  "title": "Anybody can claim fee by parsing arbitrary DistributionInfo in function argument",
+  "issueId": 299,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/299"
+}
