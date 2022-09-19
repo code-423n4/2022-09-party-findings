@@ -365,22 +365,76 @@ https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867a
 https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/proposals/ProposalExecutionEngine.sol#L80
 https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/proposals/ProposalStorage.sol#L19
 
-21 .OR" conditions cost less gas than their equivalent "AND" conditions
+21. OR" conditions cost less gas than their equivalent "AND" conditions
 
 Remember that the equivalent of (a && b) is !(!a || !b)
 
-https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L230
-https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L251
-https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/PartyGovernance.sol#L577-L581
-https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L600
-https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/PartyGovernance.sol#L624-L628
-https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L674
-https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L934
-https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/proposals/ListOnOpenseaProposal.sol#L204
-https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/proposals/ListOnOpenseaProposal.sol#L206
-https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/crowdfund/BuyCrowdfundBase.sol#L117
+Example for - https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/proposals/ListOnOpenseaProposal.sol#L204
+
+-204: if (minDuration != 0 && data.duration < minDuration) {
++204: if (!(minDuration = 0 || !data.duration) < minDuration) {
+
+Example for - https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L230
+
+-203: if (snap.intrinsicVotingPower == 0 && snap.delegatedVotingPower == 0) {
++203: if (!(snap.intrinsicVotingPower != 0 || snap.delegatedVotingPower != 0)) {
+
+Example for - https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L251
+
+-251: if (msg.sender != partyDao && !isHost[msg.sender]) {
++251: if (!(msg.sender == partyDao || isHost[msg.sender])) {
+
+Example for - https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/PartyGovernance.sol#L577-L581
+
+-577: if (status != ProposalStatus.Voting && status != ProposalStatus.Passed && status != ProposalStatus.Ready) {
++577: if (!(status == ProposalStatus.Voting || status == ProposalStatus.Passed && status == ProposalStatus.Ready)) {
+
+Example for - https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/PartyGovernance.sol#L624-L628
+
+-624: if (status != ProposalStatus.Voting && status != ProposalStatus.Passed && status != ProposalStatus.Ready) {
++624: if (!(status == ProposalStatus.Voting || status == ProposalStatus.Passed || status == ProposalStatus.Ready)) {
+
+Example for - https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L674
+
+-674: if (status != ProposalStatus.Ready && status != ProposalStatus.InProgress) {
++674: if (!(status == ProposalStatus.Ready || status == ProposalStatus.InProgress)) {
+
+Example for - https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/party/PartyGovernance.sol#L934
+
+-934: if (oldDelegate != voter && oldDelegate != newDelegate) {
++934: if (!(oldDelegate == voter || oldDelegate == newDelegate)) {
 
 Example for - https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/proposals/ListOnOpenseaProposal.sol#L204
 
-- 204: if (minDuration != 0 && data.duration < minDuration) {
-+ 204: if (!(minDuration = 0 || !data.duration) < minDuration) {
+-204: if (minDuration != 0 && data.duration < minDuration) {
++204: if (!(minDuration == 0 || data.duration > minDuration)) {
+
+Example for - https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/proposals/ListOnOpenseaProposal.sol#L206
+
+-206: } else if (maxDuration != 0 && data.duration > maxDuration) {
++206: } else if (!(maxDuration == 0 || data.duration < maxDuration)) {
+
+Example for - https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/crowdfund/BuyCrowdfundBase.sol#L117
+
+-117: if (maximumPrice_ != 0 && callValue > maximumPrice_) {
++117: if (!(maximumPrice_ == 0 || callValue < maximumPrice_)) {
+
+Example for - https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/crowdfund/AuctionCrowdfund.sol#L203
+
+-203: if (lc != CrowdfundLifecycle.Active && lc != CrowdfundLifecycle.Expired) {
++203: if (!(lc == CrowdfundLifecycle.Active || lc == CrowdfundLifecycle.Expired)) {
+
+Example for - https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/proposals/ListOnZoraProposal.sol#L96
+
+-96: if (minDuration != 0 && data.duration < minDuration) {
++96: if (!(minDuration == 0 || data.duration > minDuration)) {
+
+Example for - https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/proposals/ListOnZoraProposal.sol#L98
+
+-98: } else if (maxDuration != 0 && data.duration > maxDuration) {
++98: } else if (!(maxDuration == 0 || data.duration < maxDuration)) {
+
+Example for - https://github.com/PartyDAO/party-contracts-c4/blob/3896577b8f0fa16cba129dc2867aba786b730c1b/contracts/proposals/ListOnZoraProposal.sol#L103
+
+-103: if (maxTimeout != 0 && data.timeout > maxTimeout) {
++103: if (!(maxTimeout == 0 || data.timeout < maxTimeout)) {
