@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "kv",
+  "address": "0x30fcc80e3cb5311e6690595c84a7a9ca4e9f42bf",
+  "risk": "G",
+  "title": "Gas Optimizations",
+  "issueId": 288,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/288"
+}
