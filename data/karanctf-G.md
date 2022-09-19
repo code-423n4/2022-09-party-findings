@@ -66,7 +66,7 @@ party/PartyGovernance.sol:432:        uint256 low = 0;
 ```
 
 
-## [G-5] Check if public is used in same file or not if not then use external insted
+## [G-5]  If public is not used in same file  then use external instead
 ```solidity
 party/PartyGovernanceNFT.sol:88:    function tokenURI(uint256) public override view returns (string memory) {
 ```
