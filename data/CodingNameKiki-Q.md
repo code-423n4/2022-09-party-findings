@@ -127,6 +127,7 @@ So instead of using assert, we can just replace all of that with:
 else if (tokenType == TokenType.Erc20) {
 IERC20(token).compatTransfer(recipient, amount);
         }
+
 L-11. Low level calls don't check for contract existence
 
 Low level calls return success if called on a destructed contract. See OpenZeppelin’s Address.sol which checks address.code.length
