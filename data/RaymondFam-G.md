@@ -58,3 +58,22 @@ The `assert()` function when false, uses up all the remaining gas and reverts al
 https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/proposals/ListOnOpenseaProposal.sol#L221
 
 On a side note, the assert function should only be used to examine invariants and test for internal problems. When used correctly, it can assess your contract and discover the conditions and function calls that will result in a failed assert. A properly running program should never reach a failing assert statement; if this occurs, there is a flaw in your contract that has to be addressed.
+
+## Private Function Embedded Modifier to Reduce Contract Size
+Consider having the logic of a modifier embedded through an internal or private function to reduce contract size if need be. For instance, the following instance of modifier may be rewritten as follows:
+
+https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/party/PartyGovernance.sol#L249-L255
+
+```
+    function _onlyPartyDaoOrHost() private view {
+        address partyDao = _GLOBALS.getAddress(LibGlobals.GLOBAL_DAO_WALLET);
+        if (msg.sender != partyDao && !isHost[msg.sender]) {
+            revert OnlyPartyDaoOrHostError(msg.sender, partyDao);
+        }
+    }
+
+    modifier onlyPartyDaoOrHost() {
+        _onlyPartyDaoOrHost();
+        _;
+    }
+```
