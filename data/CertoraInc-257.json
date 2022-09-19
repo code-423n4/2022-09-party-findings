@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "CertoraInc",
+  "address": "0x09A9af114843218a7446929b1183eBec373B2827",
+  "risk": "3",
+  "title": "Attackers can mislead users to think they delegated their voting power to them",
+  "issueId": 257,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/257"
+}
