@@ -11,6 +11,12 @@ The comment should be rewritten as:
 
 // Inherited by contracts to perform read-only delegate calls.
 
+https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/crowdfund/AuctionCrowdfund.sol#L26
+
+The comment should be rewritten as:
+
+// A temporary state set by the contract during complex operations to
+
 ## Two-step Transfer of Ownership
 https://github.com/PartyDAO/party-contracts-c4/blob/main/contracts/globals/Globals.sol#L27-L28
 
