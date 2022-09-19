@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "Trust",
+  "address": "0x2FCa32d86D133394f6548028A31b95ADF3cC5Efc",
+  "risk": "3",
+  "title": "Attacker can list an NFT they own and inflate to zero all users' contributions, keeping the NFT and all the money",
+  "issueId": 213,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/213"
+}
