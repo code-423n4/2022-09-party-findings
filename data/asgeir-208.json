@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "asgeir",
+  "address": "0xeb0c4f040ff0e2278bb2c14b7cc9c357467c83e3",
+  "risk": "3",
+  "title": "Tokens available to the TokenDistributor are not safe",
+  "issueId": 208,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/208"
+}
