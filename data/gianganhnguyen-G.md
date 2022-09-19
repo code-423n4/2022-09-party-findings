@@ -450,7 +450,18 @@ Becomes:
       }
     }
 
-# 6. [G-6]  Using memory instead of storage variable
+# 6. [G-6]  <x> += y cost more gas than <x> = <x> + <y>
+
+##### Instances include:
+
+File Crowdfund.sol, line 243, 352, 355, 359, 374, 411, 427
+File TokenDistributor.sol, line 381, 
+File PartyGovernance.sol, line 595, 959
+File ArbitraryCallsProposal.sol, line 72
+File ERC20.sol, line 76, 81, 98, 103, 183, 188, 195, 200
+File ERC1155.sol, line 51, 52, 84, 85, 145, 169, 199, 216
+
+# 7. [G-7]  Using memory variable instead of storage variable will cost less gas than
 
 File Crowdfund.sol, line 240:
 
@@ -463,14 +474,7 @@ Becomes:
 ##### Instances include:
 
 File Crowdfund.sol, line 346
-
-# 6. [G-6]  <x> += y cost more gas than <x> = <x> + <y>
-
-##### Instances include:
-
-File Crowdfund.sol, line 243, 352, 355, 359, 374, 411, 427
-File TokenDistributor.sol, line 381, 
-File PartyGovernance.sol, line 595, 959
-File ArbitraryCallsProposal.sol, line 72
-File ERC20.sol, line 76, 81, 98, 103, 183, 188, 195, 200
-File ERC1155.sol, line 51, 52, 84, 85, 145, 169, 199, 216
+File PartyGovernance.sol, line 427, 853, 994
+File PartyGovernance.sol, line 427
+File PartyGovernance.sol, line 427
+File PartyGovernance.sol, line 427
