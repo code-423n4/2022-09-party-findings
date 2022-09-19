@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "CertoraInc",
+  "address": "0x09A9af114843218a7446929b1183eBec373B2827",
+  "risk": "2",
+  "title": "Unsafe ERC721 operations",
+  "issueId": 251,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/251"
+}
