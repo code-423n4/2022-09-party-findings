@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "Trust",
+  "address": "0x2FCa32d86D133394f6548028A31b95ADF3cC5Efc",
+  "risk": "3",
+  "title": " A majority attack can steal precious NFT from the party by crafting and chaining two proposals",
+  "issueId": 277,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/277"
+}
