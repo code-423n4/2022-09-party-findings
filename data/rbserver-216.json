@@ -1,0 +1,9 @@
+{
+  "contest": 160,
+  "handle": "rbserver",
+  "address": "0x4bd9605a3e546f3400df2c2be7b1c775aeea56bd",
+  "risk": "2",
+  "title": "`createParty` function can be called multiple times to create many meaningless parties for spamming frontend",
+  "issueId": 216,
+  "issueUrl": "https://github.com/code-423n4/2022-09-party-findings/issues/216"
+}
