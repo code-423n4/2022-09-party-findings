@@ -76,3 +76,24 @@ party/PartyGovernanceNFT.sol:88:    function tokenURI(uint256) public override v
 crowdfund/Crowdfund.sol:144:        if (initialBalance > 0) {
 crowdfund/Crowdfund.sol:471:        if (votingPower > 0) {
 ```
+## [G-7] Declare `uint256 mid `outside of while loop
+```solidity
+party/PartyGovernance.sol-433-        while (low < high) {
+party/PartyGovernance.sol:434:            uint256 mid = (low + high) / 2;
+
+```
+## [G-8] <x> += <y>` costs more gas than `<x> = <x> + <y>`
+```solidity
+crowdfund/Crowdfund.sol:243:            ethContributed += contributions[i].amount;
+crowdfund/Crowdfund.sol:352:                    ethOwed += c.amount;
+crowdfund/Crowdfund.sol:355:                    ethUsed += c.amount;
+crowdfund/Crowdfund.sol:359:                    ethUsed += partialEthUsed;
+crowdfund/Crowdfund.sol:374:            votingPower += (splitBps_ * totalEthUsed + (1e4 - 1)) / 1e4; // round up
+crowdfund/Crowdfund.sol:411:            totalContributions += amount;
+crowdfund/Crowdfund.sol:427:                    lastContribution.amount += amount;
+proposals/ArbitraryCallsProposal.sol:72:            ethAvailable -= calls[i].value;
+distribution/TokenDistributor.sol:381:        _storedBalances[balanceId] -= amount;
+party/PartyGovernance.sol:595:        values.votes += votingPower;
+party/PartyGovernance.sol:959:                newDelegateDelegatedVotingPower -= oldSnap.intrinsicVotingPower;
+
+```
