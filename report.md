@@ -1,3 +1,11 @@
+---
+sponsor: "PartyDAO"
+slug: "2022-09-party"
+date: "2022-11-17"  
+title: "PartyDAO contest"
+findings: "https://github.com/code-423n4/2022-09-party-findings/issues"
+contest: 160
+---
 
 # Overview
 
